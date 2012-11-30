@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="front" location="10,10" size="280,140">
+    <action name="index" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="Namespace.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="main" location="255,185" size="280,140">
+    <action name="index" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="Namespace.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="Namespace.jsp" path="/Namespace.jsp" location="91,205" size="150,55" />
+</Struts2Diagram>
+
