@@ -41,3 +41,24 @@ winrar打开struts2-core-2.3.7.jar 把struts-2.0.dtd解压出来。
 操作方法：项目右击properties——myeclipse-web 重新设置web-content-root为新项目名字。
 
 7.设置新建jsp的默认编码 window-preferences-搜索jsp 点击下面的jsp，在encoding里选Chinese,National Standard
+
+8.Action执行的时候并不一定要执行execute方法
+可以在配置文件中配置Action的时候用method=来指定执行哪个方法也可以在url地址中动态指定（动态方法调用DMI）（推荐）
+<br />
+    <a href="<%=context %>/user/userAdd">添加用户</a>
+    <br />
+    <a href="<%=context %>/user/user!add">添加用户</a>
+    <br />
+这里user后面的!后面跟的事方法，前者会产生太多的action，所以不推荐使用 
+
+9使用通配符时如果能同时匹配多个带*的action,则按照先后出现的顺序调用。如果有name为具体的action，则优先调用。
+    <package name="actions" extends="struts-default" namespace="/actions">
+        <action name="Student*" class="com.bjsxt.struts2.action.StudentAction" method="{1}">
+            <result>/Student{1}_success.jsp</result>
+        </action>
+        
+        <action name="*_*" class="com.bjsxt.struts2.action.{1}Action" method="{2}">
+            <result>/{1}_{2}_success.jsp</result>
+            <!-- {0}_success.jsp -->
+        </action>
+    </package>
